@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiperdeportivos</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+    {% if request.args.get('action') == 'existente' %}
+    <script>alert('Sesión iniciada correctamente');</script>
+{% elif request.args.get('action') == 'registrado' %}
+    <script>alert('Usuario registrado correctamente');</script>
+{% elif request.args.get('action') == 'invitado' %}
+    <script>alert('Sesión iniciada como invitado');</script>
+{% endif %}
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('iniciar') }}">Login</a>
+            <a href="#acerca-de">Acerca de</a>
+            <a href="#autos">Autos</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#clientes">Clientes</a>
+        </nav>
+    <section class="textos-header">
+        <h1>Descubre la emoción de los Hiperdeportivos</h1>
+    </section>
+    </header>
+    <main>
+    <section class="contenedor sobre-nosotros">
+    <h2 class="titulo">Nuestros autos</h2>
+    <div class="contenedor-sobre-nosotros">
+    <img src="{{ url_for('static', filename='img/ilustracion1.png') }}" alt="" class="imagen-about-us">
+    <div class="contenido-textos">
+    <h3><span>1</span>Viabilidad</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa soluta consequuntur velit praesentium laboriosam sapiente eligendi et eum fugit eaque!</p>
+    <h3><span>2</span>Los mejores autos</h3>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis cupiditate officia quaerat obcaecati incidunt natus autem harum numquam fugit perspiciatis?</p>
+    </div>
+    </div>
+    </section>
+    <section id="autos">
+    <section class="autos">
+        <div class="contenedor">
+            <h2 class="titulo">Autos</h2>
+            <div class="galeria-aut">
+
+                {% for auto in autos %}
+                <div class="imagen-aut">
+                    <a href="{{ url_for('auto', nombre=auto.nombre) }}">
+                        <img src="{{ url_for('static', filename='img/' + auto.imagen) }}" style="width: 290px; height: 200px; border-radius: 0px;">
+                    <div class="hover-galeria">
+                        <img src="{{ url_for('static', filename='img/icono1.png') }}" alt="">
+                        <p>Nuestros autos</p>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+</section>
+    <section id="clientes">
+    <section class="clientes contenedor">
+        <h2 class="titulo">Que dicen nuestros clientes</h2>
+        <div class="cards">
+            <div class="card">
+            <img src="{{ url_for('static', filename='img/face1.jpg') }}" alt="">
+            <div class="contenido-texto-card">
+                <h4>Name: Ester Expósito</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/face2.jpg') }}" alt="">
+            <div class="contenido-texto-card">
+                <h4>Name: Scarlett Johansson</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quod.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+    </section>
+    <section id="servicios">
+    <section class="about-services">
+        <div class="contenedor">
+            <h2 class="titulo">Nuestros servicios</h2>
+            <div class="servicio-cont">
+                <div class="servicio-ind">
+                    <img src="{{ url_for('static', filename='img/servicon1.png') }}" alt="">
+                    <h3>Dudas</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, cumque?</p>
+                </div>
+                <div class="servicio-ind">
+             <img src="{{ url_for('static', filename='img/servicio2.png') }}" alt="">
+                <h3>Solucionar problema</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, cumque?</p>
+            </div>
+            <div class="servicio-ind">
+         <img src="{{ url_for('static', filename='img/servicio3.png') }}" alt="">
+         <h3>Soporte tecnico</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, cumque?</p>
+         </div>
+      </div>
+     </div>
+    </section>
+    </section>
+    </main>
+    <section id="acerca-de">
+    <footer>
+        <h2 class="titulo">Acercar de</h2>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>Phone</h4>
+                <p>8294051625</p>
+            </div>
+            <div class="content-foo">
+                <h4>Email</h4>
+               <p>edison16232503@gmail.com</p>
+            </div>
+            <div class="content-foo">
+                <h4>Location</h4>
+                <p>tu casa no he</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; shisui1623 / Edison Manuel</h2>
+    </footer>
+    </section>
+</body>
+</html>
